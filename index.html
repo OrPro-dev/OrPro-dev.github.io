@@ -1,24 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video App</title>
-    <link rel="manifest" href="manifest.json">
-    <style>
-        body {
-            margin: 0;
-            background: black;
-        }
-        video {
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
-        }
-    </style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video App</title>
+
+<style>
+body {
+    margin: 0;
+    background: black;
+    overflow: hidden;
+}
+
+/* Fullscreen image */
+#coverImage {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    cursor: pointer;
+    z-index: 10;
+}
+
+/* Fullscreen video */
+video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    display: none;
+}
+</style>
 </head>
+
 <body>
-    <video autoplay muted playsinline>
-        <source src="video.mp4" type="video/mp4">
-    </video>
+
+<img id="coverImage" src="cover.png">
+
+<video id="video" playsinline>
+    <source src="video.mp4" type="video/mp4">
+</video>
+
+<script>
+const cover = document.getElementById("coverImage");
+const video = document.getElementById("video");
+
+cover.addEventListener("click", () => {
+    cover.style.display = "none";
+    video.style.display = "block";
+    video.play();
+});
+</script>
+
 </body>
 </html>
