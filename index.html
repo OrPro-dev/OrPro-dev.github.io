@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video App</title>
+
+<link rel="icon" type="image/png" href="/icon.png">
+
+<style>
+body {
+    margin: 0;
+    background: black;
+    overflow: hidden;
+}
+
+/* Fullscreen image */
+#coverImage {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    cursor: pointer;
+    z-index: 10;
+}
+
+/* Fullscreen video */
+video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    display: none;
+}
+</style>
+</head>
+
+<body>
+
+<img id="coverImage" src="coverImage.png">
+
+<video id="video" playsinline>
+    <source src="video.mp4" type="video/mp4">
+</video>
+
+<script>
+const cover = document.getElementById("coverImage");
+const video = document.getElementById("video");
+
+cover.addEventListener("click", () => {
+    cover.style.display = "none";
+    video.style.display = "block";
+    video.play();
+});
+</script>
+
+</body>
+</html>
